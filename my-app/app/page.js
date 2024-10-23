@@ -29,16 +29,16 @@ const teamMembers = [
   {
     name: "Chelsea Ross",
     role: "Engineer",
-    email: "member2@university.edu",
-    github: "github.com/member2",
-    linkedin: "linkedin.com/in/member2",
+    email: "Cross071@fiu.edu",
+    github: "none",
+    linkedin: "linkedin.com/in/chelsea-ross-8a5634284",
   },
   {
     name: "Jeffrey Mourra",
     role: "Engineer",
     email: "Jmour008@fiu.edu",
     github: "github.com/jmurra",
-    linkedin: "linkedin.com/in/member3",
+    linkedin: "none",
   },
 ];
 
@@ -80,18 +80,22 @@ const AboutContent = () => (
                 </a>
               </div>
               <div className="flex justify-center gap-4">
-                <a
-                  href={`https://${member.github}`}
-                  className="text-gray-400 hover:text-purple-400 transition-colors"
-                >
-                  <Github size={20} />
-                </a>
-                <a
-                  href={`https://${member.linkedin}`}
-                  className="text-gray-400 hover:text-purple-400 transition-colors"
-                >
-                  <Linkedin size={20} />
-                </a>
+                {member.github !== "none" && (
+                  <a
+                    href={`https://${member.github}`}
+                    className="text-gray-400 hover:text-purple-400 transition-colors"
+                  >
+                    <Github size={20} />
+                  </a>
+                )}
+                {member.linkedin !== "none" && (
+                  <a
+                    href={`https://${member.linkedin}`}
+                    className="text-gray-400 hover:text-purple-400 transition-colors"
+                  >
+                    <Linkedin size={20} />
+                  </a>
+                )}
               </div>
             </div>
           </motion.div>
@@ -153,7 +157,7 @@ const AboutContent = () => (
           {
             title: "Smart Budgeting",
             description:
-              "AI-powered budget recommendations based on your spending patterns",
+              "Budget recommendations based on your spending patterns",
           },
           {
             title: "Real-time Tracking",
@@ -671,6 +675,61 @@ const StoryboardContent = () => (
   </motion.div>
 );
 
+const FlowchartContent = () => (
+  <motion.div
+    initial={{ opacity: 0 }}
+    animate={{ opacity: 1 }}
+    transition={{ duration: 0.5 }}
+    className="max-w-4xl mx-auto space-y-8 text-gray-300"
+  >
+    <section>
+      <motion.h3
+        className="text-3xl font-semibold text-purple-300 mb-8 text-center"
+        initial={{ x: -20 }}
+        animate={{ x: 0 }}
+      >
+        App Flowchart
+      </motion.h3>
+
+      <motion.div
+        className="relative rounded-xl bg-white/5 border border-white/10 p-6 overflow-hidden"
+        initial={{ y: 20, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ delay: 0.1 }}
+        whileHover={{ scale: 1.02 }}
+      >
+        <div className="relative h-[600px] w-full">
+          <Image
+            src="/Flowchart.png"
+            alt="SaveFlow System Flowchart"
+            fill
+            className="object-contain"
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          />
+        </div>
+      </motion.div>
+
+      <motion.div
+        className="mt-8 p-6 rounded-xl bg-gradient-to-br from-purple-900/20 via-purple-800/20 to-violet-900/20 border border-purple-500/20"
+        initial={{ y: 20, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ delay: 0.2 }}
+      >
+        <h4 className="text-xl font-medium text-purple-300 mb-4">
+          Application Overview
+        </h4>
+        <p className="text-gray-400 leading-relaxed">
+          This flowchart illustrates the complete flow of SaveFlow, showcasing
+          the different processes when first getting the app. The user must
+          create their account and enter their information. They can then choose
+          to create a budget goal or go straight to the dashboard and see their
+          analytics.
+        </p>
+      </motion.div>
+    </section>
+  </motion.div>
+);
+
 export default function Home() {
   const [activeTab, setActiveTab] = useState("About");
 
@@ -686,6 +745,8 @@ export default function Home() {
         return <MoodboardContent />;
       case "Storyboard":
         return <StoryboardContent />;
+      case "Flowchart":
+        return <FlowchartContent />;
       default:
         return (
           <h2 className="text-2xl font-light text-gray-200">
