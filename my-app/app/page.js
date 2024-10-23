@@ -2,6 +2,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { Mail, Github, Linkedin } from "lucide-react";
+import Image from "next/image";
 
 const tabs = [
   "About",
@@ -234,11 +235,13 @@ const PersonasContent = () => (
           transition={{ delay: 0.1 }}
           whileHover={{ scale: 1.02 }}
         >
-          <div className="w-full h-80 mb-6 rounded-lg bg-white/5 border border-white/10 overflow-hidden">
-            <img
+          <div className="relative w-full h-80 mb-6 rounded-lg bg-white/5 border border-white/10 overflow-hidden">
+            <Image
               src="/Vivi.png"
               alt="Persona 1"
-              className="w-full h-full object-cover"
+              fill
+              className="object-cover"
+              sizes="(max-width: 768px) 100vw, 50vw"
             />
           </div>
           <h4 className="text-xl font-medium text-purple-300 mb-4">Vivi N.</h4>
@@ -255,11 +258,13 @@ const PersonasContent = () => (
           transition={{ delay: 0.2 }}
           whileHover={{ scale: 1.02 }}
         >
-          <div className="w-full h-80 mb-6 rounded-lg bg-white/5 border border-white/10 overflow-hidden">
-            <img
+          <div className="relative w-full h-80 mb-6 rounded-lg bg-white/5 border border-white/10 overflow-hidden">
+            <Image
               src="/Jonathan.png"
               alt="Persona 2"
-              className="w-full h-full object-cover"
+              fill
+              className="object-cover"
+              sizes="(max-width: 768px) 100vw, 50vw"
             />
           </div>
           <h4 className="text-xl font-medium text-purple-300 mb-4">
@@ -313,7 +318,7 @@ const ScenariosContent = () => (
             called SaveFlow. After downloading the app and creating an account
             using his fiu email AlexCar@fiu.edu and setting his password as
             KingAlex23. Alex a skeptical young man, goes on about his day
-            because he didn't want to buy the subscription. He returns the
+            because he did not want to buy the subscription. He returns the
             following day to the website and Logs in, purchases the $3.99
             subscription he navigates to the budget page, sets a new daily food
             expense of Chipotle for $12.99 and saves his data. He then navigates
@@ -524,11 +529,13 @@ const StoryboardContent = () => (
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 0.1 }}
         >
-          <div className="rounded-xl bg-white/5 border border-white/10 p-4">
-            <img
+          <div className="relative rounded-xl bg-white/5 border border-white/10 p-4 h-64">
+            <Image
               src="/sb1.jpg"
               alt="Initial App Launch"
-              className="w-full rounded-lg"
+              className="rounded-lg object-contain w-full h-full"
+              width={500}
+              height={300}
             />
           </div>
           <div className="space-y-4">
@@ -559,11 +566,13 @@ const StoryboardContent = () => (
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 0.2 }}
         >
-          <div className="rounded-xl bg-white/5 border border-white/10 p-4 md:order-2">
-            <img
+          <div className="relative rounded-xl bg-white/5 border border-white/10 p-4 h-64">
+            <Image
               src="/sb2.jpg"
               alt="Budget Creation"
-              className="w-full rounded-lg"
+              className="rounded-lg object-contain w-full h-full"
+              width={500}
+              height={300}
             />
           </div>
           <div className="space-y-4 md:order-1">
@@ -595,11 +604,13 @@ const StoryboardContent = () => (
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 0.3 }}
         >
-          <div className="rounded-xl bg-white/5 border border-white/10 p-4">
-            <img
+          <div className="relative rounded-xl bg-white/5 border border-white/10 p-4 h-64">
+            <Image
               src="/sb3.jpg"
               alt="Expense Tracking"
-              className="w-full rounded-lg"
+              className="rounded-lg object-contain w-full h-full"
+              width={500}
+              height={300}
             />
           </div>
           <div className="space-y-4">
@@ -630,11 +641,13 @@ const StoryboardContent = () => (
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 0.4 }}
         >
-          <div className="rounded-xl bg-white/5 border border-white/10 p-4 md:order-2">
-            <img
+          <div className="relative rounded-xl bg-white/5 border border-white/10 p-4 h-64">
+            <Image
               src="/sb4.jpg"
               alt="Progress Analysis"
-              className="w-full rounded-lg"
+              className="rounded-lg object-contain w-full h-full"
+              width={500}
+              height={300}
             />
           </div>
           <div className="space-y-4 md:order-1">
@@ -648,7 +661,7 @@ const StoryboardContent = () => (
             </div>
             <p className="text-gray-400 leading-relaxed">
               The app presents the user with a dynamic chart of their income and
-              expenses, keeping tabs on their remainding monthly income as well
+              expenses, keeping tabs on their remaining monthly income as well
               as upcoming payments.
             </p>
           </div>
@@ -695,12 +708,15 @@ export default function Home() {
         className="relative pt-8 pb-12 text-center"
       >
         {/* Logo Container */}
-        <motion.img
-          src="/Logo.png"
-          className="w-24 h-24 mx-auto mb-2 rounded-xl"
-          whileHover={{ scale: 1.05 }}
-          transition={{ type: "spring", stiffness: 400 }}
-        />
+        <div className="relative w-24 h-24 mx-auto mb-2">
+          <Image
+            src="/Logo.png"
+            alt="SaveFlow Logo"
+            fill
+            className="rounded-xl object-contain"
+            sizes="96px"
+          />
+        </div>
 
         <motion.div
           className="absolute top-[-120px] left-1/2 transform -translate-x-1/2 w-[300px] h-[300px] bg-purple-600/20 rounded-full blur-[120px] pointer-events-none"
