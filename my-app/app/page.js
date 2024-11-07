@@ -779,12 +779,12 @@ const WireframesContent = () => (
           <p className="text-gray-400 leading-relaxed">
             The metaphor underlying the wireframes is that of a financial wheel
             on a dashboard, where users can quickly visualize and comprehend the
-            core aspects of their financial health. Just like a car’s dashboard
-            uses a speedometer and gauges to instantly inform the driver of
-            their vehicle's status, the financial wheel provides a visual
-            summary of income and expenses, broken down by category. This
-            enables users to see at a glance how they are allocating funds and
-            to assess their financial situation with clarity and control.
+            core aspects of their financial health. Just like a car&rsquo;s
+            dashboard uses a speedometer and gauges to instantly inform the
+            driver of their vehicle&rsquo;s status, the financial wheel provides
+            a visual summary of income and expenses, broken down by category.
+            This enables users to see at a glance how they are allocating funds
+            and to assess their financial situation with clarity and control.
           </p>
         </motion.div>
       </div>
