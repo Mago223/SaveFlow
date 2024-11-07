@@ -730,6 +730,114 @@ const FlowchartContent = () => (
   </motion.div>
 );
 
+const WireframesContent = () => (
+  <motion.div
+    initial={{ opacity: 0 }}
+    animate={{ opacity: 1 }}
+    transition={{ duration: 0.5 }}
+    className="max-w-4xl mx-auto space-y-8 text-gray-300"
+  >
+    <section>
+      <motion.h3
+        className="text-3xl font-semibold text-purple-300 mb-8 text-center"
+        initial={{ x: -20 }}
+        animate={{ x: 0 }}
+      >
+        Wireframes
+      </motion.h3>
+
+      {/* Theme and Metaphor */}
+      <div className="grid md:grid-cols-2 gap-6 mb-8">
+        <motion.div
+          className="p-6 rounded-xl bg-white/5 border border-white/10"
+          initial={{ y: 20, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ delay: 0.1 }}
+          whileHover={{ scale: 1.02 }}
+        >
+          <h4 className="text-lg font-medium text-purple-300 mb-4">Theme</h4>
+          <p className="text-gray-400 leading-relaxed">
+            The theme of SaveFlow centers on financial empowerment and clarity.
+            By using a sleek, dark interface with vibrant purple accents, the
+            design evokes a sense of professionalism and focus. The central
+            wheel on the dashboard visually organizes income and expenses,
+            making it easy for users to understand and manage their finances at
+            a glance. The intuitive layout and color-coded categories are
+            designed to give users a clear, organized perspective on their
+            financial health, fostering confidence and a sense of control in
+            budgeting and spending decisions.
+          </p>
+        </motion.div>
+        <motion.div
+          className="p-6 rounded-xl bg-white/5 border border-white/10"
+          initial={{ y: 20, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ delay: 0.2 }}
+          whileHover={{ scale: 1.02 }}
+        >
+          <h4 className="text-lg font-medium text-purple-300 mb-4">Metaphor</h4>
+          <p className="text-gray-400 leading-relaxed">
+            The metaphor underlying the wireframes is that of a financial wheel
+            on a dashboard, where users can quickly visualize and comprehend the
+            core aspects of their financial health. Just like a car’s dashboard
+            uses a speedometer and gauges to instantly inform the driver of
+            their vehicle's status, the financial wheel provides a visual
+            summary of income and expenses, broken down by category. This
+            enables users to see at a glance how they are allocating funds and
+            to assess their financial situation with clarity and control.
+          </p>
+        </motion.div>
+      </div>
+
+      {/* Wireframe Examples */}
+      <div className="grid md:grid-cols-3 gap-6">
+        <motion.div
+          className="relative rounded-xl bg-white/5 border border-white/10 p-4 h-80"
+          initial={{ y: 20, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ delay: 0.3 }}
+          whileHover={{ scale: 1.02 }}
+        >
+          <Image
+            src="/saveflowLogin.png"
+            alt="login page"
+            fill
+            className="rounded-lg object-contain w-full h-full"
+          />
+        </motion.div>
+        <motion.div
+          className="relative rounded-xl bg-white/5 border border-white/10 p-4 h-80"
+          initial={{ y: 20, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ delay: 0.4 }}
+          whileHover={{ scale: 1.02 }}
+        >
+          <Image
+            src="/saveflowsignup.png"
+            alt="sign up page"
+            fill
+            className="rounded-lg object-contain w-full h-full"
+          />
+        </motion.div>
+        <motion.div
+          className="relative rounded-xl bg-white/5 border border-white/10 p-4 h-80"
+          initial={{ y: 20, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ delay: 0.5 }}
+          whileHover={{ scale: 1.02 }}
+        >
+          <Image
+            src="/saveflowdashboard.png"
+            alt="Dashboard"
+            fill
+            className="rounded-lg object-contain w-full h-full"
+          />
+        </motion.div>
+      </div>
+    </section>
+  </motion.div>
+);
+
 export default function Home() {
   const [activeTab, setActiveTab] = useState("About");
 
@@ -747,6 +855,8 @@ export default function Home() {
         return <StoryboardContent />;
       case "Flowchart":
         return <FlowchartContent />;
+      case "Wireframes":
+        return <WireframesContent />;
       default:
         return (
           <h2 className="text-2xl font-light text-gray-200">
