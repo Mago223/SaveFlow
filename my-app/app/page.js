@@ -52,7 +52,7 @@ const PrototypeContent = () => (
     {[
       {
         title: "Login",
-        image: "/saveflowlogin.png",
+        image: "/saveflowLogin.png",
         description: "Secure and simple login experience",
       },
       {
