@@ -42,6 +42,83 @@ const teamMembers = [
   },
 ];
 
+const PrototypeContent = () => (
+  <motion.div
+    initial={{ opacity: 0 }}
+    animate={{ opacity: 1 }}
+    transition={{ duration: 0.5 }}
+    className="max-w-6xl mx-auto grid grid-cols-2 gap-8"
+  >
+    {[
+      {
+        title: "Login",
+        image: "/saveflowlogin.png",
+        description: "Secure and simple login experience",
+      },
+      {
+        title: "Signup",
+        image: "/saveflowsignup.png",
+        description: "Quick and easy account creation",
+      },
+      {
+        title: "Dashboard",
+        image: "/saveflowdashboard.png",
+        description: "Comprehensive financial overview",
+      },
+      {
+        title: "Income & Expenses",
+        image: "/saveflowinput.png",
+        description: "Easy transaction tracking",
+      },
+    ].map((page, index) => (
+      <motion.div
+        key={index}
+        className="bg-white/5 border border-white/10 rounded-xl overflow-hidden flex flex-col"
+        initial={{ y: 20, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ delay: index * 0.1 }}
+      >
+        {/* Image container with aspect ratio */}
+        <div className="aspect-w-16 aspect-h-9 bg-gray-800">
+          <img
+            src={page.image}
+            alt={page.title}
+            className="w-full h-full object-contain"
+          />
+        </div>
+        <div className="p-4">
+          <h4 className="text-xl font-medium text-purple-300 mb-2">
+            {page.title}
+          </h4>
+          <p className="text-gray-400">{page.description}</p>
+        </div>
+      </motion.div>
+    ))}
+
+    <motion.div
+      className="col-span-2 bg-gradient-to-r from-purple-900/20 to-purple-700/20 border border-purple-500/20 rounded-xl p-6 text-center"
+      initial={{ y: 20, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ delay: 0.5 }}
+    >
+      <h3 className="text-2xl font-semibold text-purple-300 mb-4">
+        Prototype Preview
+      </h3>
+      <p className="text-gray-300 mb-4">
+        Explore our prototype to see how SaveFlow can revolutionize your
+        financial management.
+      </p>
+      <motion.button
+        className="px-6 py-3 bg-purple-600 text-white rounded-lg font-medium hover:bg-purple-700 transition-colors"
+        whileHover={{ scale: 1.05 }}
+        whileTap={{ scale: 0.95 }}
+      >
+        View Full Prototype
+      </motion.button>
+    </motion.div>
+  </motion.div>
+);
+
 const AboutContent = () => (
   <motion.div
     initial={{ opacity: 0 }}
@@ -857,6 +934,8 @@ export default function Home() {
         return <FlowchartContent />;
       case "Wireframes":
         return <WireframesContent />;
+      case "Prototype":
+        return <PrototypeContent />;
       default:
         return (
           <h2 className="text-2xl font-light text-gray-200">
