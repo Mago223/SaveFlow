@@ -1,7 +1,14 @@
 "use client";
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Mail, Github, Linkedin } from "lucide-react";
+import {
+  Mail,
+  Github,
+  Linkedin,
+  ChevronLeft,
+  ChevronRight,
+  Maximize2,
+} from "lucide-react";
 import Image from "next/image";
 
 const tabs = [
@@ -16,7 +23,132 @@ const tabs = [
   "GUI",
   "Prototype",
   "References",
+  "Survey",
 ];
+
+const SurveyContent = () => {
+  const surveyImages = [
+    { src: "/survey1.png", alt: "Survey chart 1" },
+    { src: "/survey2.png", alt: "Survey chart 2" },
+    { src: "/survey3.png", alt: "Survey chart 3" },
+    { src: "/survey4.png", alt: "Survey chart 4" },
+    { src: "/survey5.png", alt: "Survey chart 5" },
+    { src: "/survey6.png", alt: "Survey chart 6" },
+    { src: "/survey7.png", alt: "Survey chart 7" },
+    { src: "/survey8.png", alt: "Survey chart 8" },
+    { src: "/survey9.png", alt: "Survey chart 9" },
+    { src: "/survey10.png", alt: "Survey chart 10" },
+    { src: "/survey11.png", alt: "Survey chart 11" },
+    { src: "/survey12.png", alt: "Survey chart 12" },
+    { src: "/survey13.png", alt: "Survey chart 13" },
+    { src: "/survey14.png", alt: "Survey chart 14" },
+    { src: "/survey15.png", alt: "Survey chart 15" },
+  ];
+
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const nextImage = () => {
+    setCurrentImageIndex((prev) =>
+      prev === surveyImages.length - 1 ? 0 : prev + 1
+    );
+  };
+
+  const prevImage = () => {
+    setCurrentImageIndex((prev) =>
+      prev === 0 ? surveyImages.length - 1 : prev - 1
+    );
+  };
+
+  return (
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.5 }}
+      className="max-w-6xl mx-auto space-y-8 text-gray-300"
+    >
+      {/* Survey Section */}
+      <section className="text-center mb-12">
+        <motion.h3
+          className="text-3xl font-semibold text-purple-300 mb-8"
+          initial={{ x: -20 }}
+          animate={{ x: 0 }}
+        >
+          Survey Results
+        </motion.h3>
+
+        <div className="relative w-full max-w-4xl mx-auto">
+          <motion.div
+            key={currentImageIndex}
+            initial={{ opacity: 0, x: 50 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: -50 }}
+            transition={{ duration: 0.3 }}
+            className="w-full h-[600px] bg-gray-800 rounded-xl overflow-hidden relative group"
+          >
+            <img
+              src={surveyImages[currentImageIndex].src}
+              alt={surveyImages[currentImageIndex].alt}
+              className="w-full h-full object-contain"
+            />
+
+            {/* Navigation Buttons */}
+            <button
+              onClick={prevImage}
+              className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/10 hover:bg-white/20 p-2 rounded-full transition-all"
+            >
+              <ChevronLeft className="text-purple-300" size={24} />
+            </button>
+            <button
+              onClick={nextImage}
+              className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/10 hover:bg-white/20 p-2 rounded-full transition-all"
+            >
+              <ChevronRight className="text-purple-300" size={24} />
+            </button>
+
+            {/* Expand Button */}
+            <button
+              onClick={() => setIsModalOpen(true)}
+              className="absolute top-4 right-4 bg-white/10 hover:bg-white/20 p-2 rounded-full transition-all"
+            >
+              <Maximize2 className="text-purple-300" size={20} />
+            </button>
+          </motion.div>
+
+          {/* Thumbnail Navigation */}
+          <div className="flex justify-center mt-4 space-x-2">
+            {surveyImages.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => setCurrentImageIndex(index)}
+                className={`w-3 h-3 rounded-full transition-all ${
+                  index === currentImageIndex
+                    ? "bg-purple-500"
+                    : "bg-gray-500 hover:bg-purple-300"
+                }`}
+              />
+            ))}
+          </div>
+        </div>
+
+        {/* Full Screen Modal */}
+        {isModalOpen && (
+          <div
+            className="fixed inset-0 z-50 bg-black/90 flex items-center justify-center p-8"
+            onClick={() => setIsModalOpen(false)}
+          >
+            <img
+              src={surveyImages[currentImageIndex].src}
+              alt={surveyImages[currentImageIndex].alt}
+              className="max-w-full max-h-full object-contain"
+              onClick={(e) => e.stopPropagation()}
+            />
+          </div>
+        )}
+      </section>
+    </motion.div>
+  );
+};
 
 const teamMembers = [
   {
@@ -939,6 +1071,8 @@ export default function Home() {
         return <WireframesContent />;
       case "Prototype":
         return <PrototypeContent />;
+      case "Survey":
+        return <SurveyContent />;
       default:
         return (
           <h2 className="text-2xl font-light text-gray-200">
